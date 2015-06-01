@@ -5,12 +5,10 @@ COPY assets/ /root/assets/
 RUN apt-get update \
  && apt-get install -y curl ca-certificates nginx \
  && curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.25.4/install.sh | bash \
- && . /root/.nvm/nvm.sh \
+ && bash -c ". /root/.nvm"
  && nvm install iojs-v2.0.0 \
  && npm install hexo-cli -g \
  && rm -rf /var/lib/apt/lists/*
-
-RUN mkdir -p /usr/src/app
 
 WORKDIR /root
 
