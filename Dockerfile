@@ -8,7 +8,7 @@ RUN apt-get update \
  && bash -c ". /root/.nvm/nvm.sh && nvm install iojs-v2.0.0"
  && rm -rf /var/lib/apt/lists/*
 
-ENV /root/.nvm/versions/io.js/v2.0.0/bin:$PATH
+ENV PATH /root/.nvm/versions/io.js/v2.0.0/bin:$PATH
 
 RUN npm install hexo-cli -g 
 
