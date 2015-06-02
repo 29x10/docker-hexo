@@ -8,8 +8,6 @@ RUN apt-get update \
 
 COPY config/default /etc/nginx/sites-available/default
 
-RUN service nginx restart
-
 RUN npm install hexo-cli -g
 
 RUN hexo init /root/blog
@@ -26,6 +24,6 @@ RUN npm install
 
 RUN hexo generate
 
-EXPOSE 4000
+EXPOSE 80
 
-CMD ["hexo", "server"]
+CMD ["nginx", "-g", "daemon off;"]
