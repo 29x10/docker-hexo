@@ -10,15 +10,15 @@ COPY config/default /etc/nginx/sites-available/default
 
 RUN npm install hexo-cli -g
 
-RUN hexo init /root/blog
+RUN hexo init /usr/src/blog
 
-RUN bash -c "rm -rf /root/blog/source/*"
+RUN bash -c "rm -rf /usr/src/blog/source/*"
 
-COPY config/_config.yml /root/blog/_config.yml
+COPY config/_config.yml /usr/src/blog/_config.yml
 
-COPY source /root/blog/source/
+COPY source /usr/src/blog/source/
 
-WORKDIR /root/blog
+WORKDIR /usr/src/blog
 
 RUN npm install
 
