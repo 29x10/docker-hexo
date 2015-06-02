@@ -27,3 +27,5 @@ RUN npm install
 RUN hexo generate
 
 EXPOSE 80
+
+CMD ["/bin/bash"]
