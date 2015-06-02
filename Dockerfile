@@ -3,7 +3,8 @@ FROM binlei/node:iojs-v2.0.0
 MAINTAINER BINLEI XUE
 
 RUN apt-get update \
- && apt-get install nginx
+ && apt-get install -y nginx
+ && rm -rf /var/lib/apt/lists/*
 
 COPY config/default /etc/nginx/sites-available/default
 
