@@ -1,24 +1,28 @@
-FROM ubuntu:trusty
+FROM binlei/node:iojs-v2.0.0
 
-COPY assets/ /root/assets/
+MAINTAINER BINLEI XUE
 
 RUN apt-get update \
- && apt-get install -y curl ca-certificates nginx \
- && curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.25.4/install.sh | bash \
- && bash -c ". /root/.nvm/nvm.sh && nvm install iojs-v2.0.0" \
- && rm -rf /var/lib/apt/lists/*
+ && apt-get install nginx
 
-ENV PATH /root/.nvm/versions/io.js/v2.0.0/bin:$PATH
+COPY config/default /etc/nginx/sites-available/default
 
-RUN npm install hexo-cli -g 
+RUN service nginx restart
 
-WORKDIR /root
+RUN npm install hexo-cli -g
 
-RUN hexo init blog
+RUN hexo init /root/blog
+
+RUN bash -c "rm -rf /root/blog/source/*"
+
+COPY config/_config.yml /root/blog/_config.yml
+
+COPY source /root/blog/source/
+
 WORKDIR /root/blog
 
 RUN npm install
 
-EXPOSE 4000
+RUN hexo generate
 
-CMD ["hexo", "server"]
+EXPOSE 80
