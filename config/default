@@ -5,7 +5,7 @@ server {
 	server_name localhost;
 
 	location / {
-        root /root/blog/public;
+        root /usr/src/blog/public;
         index index.html index.htm;
 	}
     
