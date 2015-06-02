@@ -25,6 +25,7 @@ RUN npm install
 RUN git clone -b v0.4.0 https://github.com/iissnan/hexo-theme-next themes/next
 
 RUN sed 's/#scheme/scheme/g' themes/next/_config.yml
+RUN sed 's/\/tags/\/tags\//g' themes/next/_config.yml
 
 RUN hexo generate
 
