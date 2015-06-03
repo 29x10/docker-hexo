@@ -1,6 +1,1 @@
-# Hexo 中间产物
-
-
-为了保证减少build的时间，将可以避免的耗时产物在这里产生
-
-使用iojs-2.2.1
+[![dockeri.co](http://dockeri.co/image/binlei/hexo)](https://registry.hub.docker.com/u/binlei/hexo/)
